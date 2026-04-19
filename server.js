@@ -11,7 +11,10 @@ const dbURI = "mongodb+srv://devanshwebdev:devanshweb03@cluster0.9cdgyoa.mongodb
 
 mongoose.connect(dbURI)
     .then(() => console.log("✅ Cloud Database Connected!"))
-    .catch(err => console.log("❌ DB Error:", err));
+    .catch(err => {
+    console.log("❌ DB Connection Failed!");
+    console.log(err); // This line will show the REAL error in Render logs
+});
 
 const Product = mongoose.model('Product', new mongoose.Schema({
     brand: String, name: String, price: Number, rating: String, reviews: Number, category: String, image: String
